@@ -271,9 +271,9 @@ const Hero: React.FC = () => {
 
                     <RevealOnScroll delay={800}>
                         <div className="mt-12 flex justify-center gap-6 text-slate-400">
-                            <a href="#" className="hover:text-cyan-400 transition-colors transform hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]"><Github className="w-6 h-6" /></a>
-                            <a href="#" className="hover:text-cyan-400 transition-colors transform hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]"><Linkedin className="w-6 h-6" /></a>
-                            <a href="#" className="hover:text-cyan-400 transition-colors transform hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]"><Mail className="w-6 h-6" /></a>
+                            <a href="https://github.com/joshuakatumba" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors transform hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]"><Github className="w-6 h-6" /></a>
+                            <a href="https://ug.linkedin.com/in/joshua-katumba-aab89234b" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors transform hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]"><Linkedin className="w-6 h-6" /></a>
+                            <a href="mailto:katumbajoshua10@gmail.com" className="hover:text-cyan-400 transition-colors transform hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]"><Mail className="w-6 h-6" /></a>
                         </div>
                     </RevealOnScroll>
                 </div>
@@ -321,9 +321,9 @@ const AboutMe: React.FC = () => {
 
                             {/* Image container */}
                             <div className="relative rounded-3xl overflow-hidden border border-slate-700 group-hover:border-cyan-500/50 transition-all duration-500 aspect-[4/5] bg-slate-800">
-                                {/* Placeholder for user's image */}
+                                {/* User's Profile Image */}
                                 <img
-                                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800"
+                                    src="/profile.png"
                                     alt="Profile"
                                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                                 />
