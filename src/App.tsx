@@ -247,7 +247,7 @@ const Hero: React.FC = () => {
 
                     <RevealOnScroll delay={400}>
                         <p className="mt-4 max-w-2xl mx-auto text-xl text-slate-400 mb-10">
-                            Hi, I'm Alex. A Full Stack Developer passionate about building accessible,
+                            Hi, I'm Joshua. A Full Stack Developer passionate about building accessible,
                             pixel-perfect, and performant web applications.
                         </p>
                     </RevealOnScroll>
@@ -542,7 +542,7 @@ const Footer: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
                 <div className="mb-4 md:mb-0">
                     <span className="text-xl font-bold text-white bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">DevPortfolio.</span>
-                    <p className="text-slate-500 text-sm mt-1">© {new Date().getFullYear()} Alex Developer. All rights reserved.</p>
+                    <p className="text-slate-500 text-sm mt-1">© {new Date().getFullYear()} Joshua Katumba. All rights reserved.</p>
                 </div>
 
                 <div className="flex gap-6">
