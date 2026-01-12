@@ -546,15 +546,15 @@ const Footer: React.FC = () => {
                 </div>
 
                 <div className="flex gap-6">
-                    <a href="#" className="text-slate-400 hover:text-cyan-400 transition-all transform hover:-translate-y-1 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
+                    <a href="https://github.com/joshuakatumba" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-all transform hover:-translate-y-1 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
                         <span className="sr-only">GitHub</span>
                         <Github className="w-5 h-5" />
                     </a>
-                    <a href="#" className="text-slate-400 hover:text-cyan-400 transition-all transform hover:-translate-y-1 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
-                        <span className="sr-only">Twitter</span>
-                        <Code2 className="w-5 h-5" />
+                    <a href="mailto:katumbajoshua10@gmail.com" className="text-slate-400 hover:text-cyan-400 transition-all transform hover:-translate-y-1 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
+                        <span className="sr-only">Email</span>
+                        <Mail className="w-5 h-5" />
                     </a>
-                    <a href="#" className="text-slate-400 hover:text-cyan-400 transition-all transform hover:-translate-y-1 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
+                    <a href="https://ug.linkedin.com/in/joshua-katumba-aab89234b" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-all transform hover:-translate-y-1 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
                         <span className="sr-only">LinkedIn</span>
                         <Linkedin className="w-5 h-5" />
                     </a>
