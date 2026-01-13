@@ -77,7 +77,7 @@ const PROJECTS: Project[] = [
         title: "AI Poem Chatbot",
         description: "An interactive AI-powered chatbot that generates creative and personalized poems based on user prompts. Features real-time conversation, multiple poetry styles, and emotion-based verse generation.",
         tags: ["Python", "FastAPI", "OpenAI API", "React"],
-        links: { demo: "#", code: "#" },
+        links: { demo: "#", code: "https://github.com/joshuakatumba/poem-app.git" },
         image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=800"
     },
     {
