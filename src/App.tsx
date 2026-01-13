@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import {
     Github,
     Linkedin,
     Mail,
     ExternalLink,
-    Code2,
     Terminal,
     Layout,
     Server,
@@ -470,9 +470,46 @@ const Projects: React.FC = () => {
 };
 
 const Contact: React.FC = () => {
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const formRef = useRef<HTMLFormElement>(null);
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
+
+    // Initialize EmailJS (optional, can also be done in main file)
+    // useEffect(() => { emailjs.init("YOUR_PUBLIC_KEY"); }, []);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Handle form submission
+        setLoading(true);
+        setStatus({ type: null, message: '' });
+
+        if (!formRef.current) return;
+
+        try {
+            const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+            const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+            const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+            if (!serviceId || !templateId || !publicKey) {
+                throw new Error("EmailJS credentials not found in environment variables.");
+            }
+
+            // Note: Make sure your input fields have name attributes: "from_name", "from_email", "message"
+            // matching your EmailJS template variables.
+            await emailjs.sendForm(
+                serviceId,
+                templateId,
+                formRef.current,
+                publicKey
+            );
+
+            setStatus({ type: 'success', message: 'Message sent successfully! I will get back to you soon.' });
+            formRef.current.reset();
+        } catch (error) {
+            console.error(error);
+            setStatus({ type: 'error', message: 'Failed to send message. Please try again later.' });
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -491,13 +528,21 @@ const Contact: React.FC = () => {
                             </p>
                         </div>
 
-                        <form className="space-y-4 relative z-10" onSubmit={handleSubmit}>
+                        <form ref={formRef} className="space-y-4 relative z-10" onSubmit={handleSubmit}>
+                            {status.message && (
+                                <div className={`p-4 rounded-lg text-sm font-medium ${status.type === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
+                                    {status.message}
+                                </div>
+                            )}
+
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-1">Name</label>
                                     <input
                                         type="text"
                                         id="name"
+                                        name="from_name"
+                                        required
                                         className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all duration-300 focus:shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:border-slate-700"
                                         placeholder="John Doe"
                                     />
@@ -507,6 +552,8 @@ const Contact: React.FC = () => {
                                     <input
                                         type="email"
                                         id="email"
+                                        name="from_email"
+                                        required
                                         className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all duration-300 focus:shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:border-slate-700"
                                         placeholder="john@example.com"
                                     />
@@ -516,16 +563,20 @@ const Contact: React.FC = () => {
                                 <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-1">Message</label>
                                 <textarea
                                     id="message"
+                                    name="message"
                                     rows={4}
+                                    required
                                     className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all duration-300 focus:shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:border-slate-700 resize-none"
                                     placeholder="Tell me about your project..."
                                 ></textarea>
                             </div>
                             <button
                                 type="submit"
-                                className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] active:scale-[0.98]"
+                                disabled={loading}
+                                className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
                             >
-                                Send Message <Send className="w-4 h-4" />
+                                {loading ? 'Sending...' : 'Send Message'}
+                                {!loading && <Send className="w-4 h-4" />}
                             </button>
                         </form>
                     </div>
