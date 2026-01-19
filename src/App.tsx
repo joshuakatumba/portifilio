@@ -72,6 +72,7 @@ const PROJECTS: Project[] = [
         links: { demo: "https://gyneoapp-t3mz.vercel.app/", code: "https://github.com/joshuakatumba/gyneoapp.git" },
         image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800"
     },
+    /*
     {
         id: 3,
         title: "AI Poem Chatbot",
@@ -80,6 +81,7 @@ const PROJECTS: Project[] = [
         links: { demo: "#", code: "https://github.com/joshuakatumba/poem-app.git" },
         image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=800"
     },
+    */
     {
         id: 4,
         title: "MedTrack",
