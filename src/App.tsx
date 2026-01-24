@@ -89,6 +89,14 @@ const PROJECTS: Project[] = [
         tags: ["React", "Node.js", "PostgreSQL", "Health Tech"],
         links: { demo: "https://med-track-zehk.vercel.app/", code: "https://github.com/joshuakatumba/med-track.git" },
         image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+        id: 5,
+        title: "Aqua AI",
+        description: "Machine learning powered application to analyze water turbidity to determine if it is safe for drinking. Project under Bevisioneers by Mercedes Benz fellowship.",
+        tags: ["Machine Learning", "React Native", "Bevisioneers", "Water Safety"],
+        links: { demo: "https://bevisioneer-aqua-ai.vercel.app/", code: "" },
+        image: "/child_drinking_water.png"
     }
 ];
 
@@ -423,15 +431,17 @@ const Projects: React.FC = () => {
                                             {project.title}
                                         </h3>
                                         <div className="flex gap-3">
-                                            <a
-                                                href={project.links.code}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-slate-400 hover:text-white hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.8)] transition-all transform hover:scale-110"
-                                                title="View Code"
-                                            >
-                                                <Github className="w-5 h-5" />
-                                            </a>
+                                            {project.links.code && (
+                                                <a
+                                                    href={project.links.code}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-slate-400 hover:text-white hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.8)] transition-all transform hover:scale-110"
+                                                    title="View Code"
+                                                >
+                                                    <Github className="w-5 h-5" />
+                                                </a>
+                                            )}
                                             <a
                                                 href={project.links.demo}
                                                 target="_blank"
